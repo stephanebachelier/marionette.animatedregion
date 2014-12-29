@@ -1,0 +1,23 @@
+{
+  "name": "marionette.animatedregion",
+  "version": "0.0.0",
+  "description": "Animated region for Marionette",
+  "main": "dist/marionette.animatedregion.js",
+  "author": {
+    "name": "Stéphane Bachelier",
+    "email": "stephane.bachelier@gmail.com"
+  },
+  "repository": {
+    "url": "https://github.com/stephanebachelier/marionette.animatedregion.git",
+    "type": "git"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
