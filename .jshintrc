@@ -32,6 +32,9 @@
     "before": true,
     "after": true,
     "beforeEach": true,
-    "afterEach": true
+    "afterEach": true,
+    "Marionette": true,
+    "_": true,
+    "motioncontrol": true
   }
 }
