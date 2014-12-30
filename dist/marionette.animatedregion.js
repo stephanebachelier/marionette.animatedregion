@@ -20,7 +20,7 @@
   }
 }(this, function (Marionette, _, motioncontrol) {
 
-  /*! marionette.animatedregion - v0.2.1
+  /*! marionette.animatedregion - v0.2.2
    *  Release on: 2014-12-30
    *  Copyright (c) 2014 Stéphane Bachelier
    *  Licensed MIT */
@@ -67,7 +67,7 @@
       // wait for animation end to remove animation class trigger
       // this help replaying the animation on attaching new content
       return motioncontrol(view.el, {
-        trigger: _.result(self, '_launchAnimation')
+        trigger: self.launchAnimation(view, direction)
       }).then(function () {
         if (self.isViewSupportingAnimation) {
           self.triggerMethod('animated:view:' + direction, view);
@@ -75,7 +75,7 @@
       });
     },
 
-    _launchAnimation: function (view, direction) {
+    launchAnimation: function (view, direction) {
       var methodName = 'animateView' + direction.charAt(0).toUpperCase() + direction.substring(1);
       var method = this[methodName];
       // return method result only if method exist else return null which will not interfere
