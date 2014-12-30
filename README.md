@@ -12,9 +12,19 @@ $ npm install --save-dev marionette.animatedregion
 
 ## Usage
 
+TODO
+
 ## Documentation
 
+TODO
+
 ## API
+
+TODO
+
+## Note
+
+Do not use a version prior to 0.2.1 as the release process had failures in that no dist folder was commited.
 
 ## License
 
