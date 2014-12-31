@@ -27,7 +27,7 @@
     "grunt-groc": "^0.4.5",
     "grunt-jscs": "^0.6.1",
     "grunt-lintspaces": "^0.5.1",
-    "grunt-umd": "git://github.com/stephanebachelier/grunt-umd.git#master",
+    "grunt-umd": "^2.3.0-beta1",
     "jit-grunt": "^0.7.0",
     "jshint-stylish": "^0.2.0",
     "load-grunt-config": "^0.10.0",
