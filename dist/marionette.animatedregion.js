@@ -20,7 +20,7 @@
   }
 }(this, function (Marionette, _, motioncontrol) {
 
-  /*! marionette.animatedregion - v0.2.3
+  /*! marionette.animatedregion - v0.2.4
    *  Release on: 2015-01-02
    *  Copyright (c) 2015 Stéphane Bachelier
    *  Licensed MIT */
@@ -63,12 +63,15 @@
 
     animateView: function (view, direction) {
       direction = direction || 'in';
+
+      var options = {
+        trigger: _.bind(_.partial(this.launchAnimation, view, direction), this)
+      };
+
       var self = this;
       // wait for animation end to remove animation class trigger
       // this help replaying the animation on attaching new content
-      return motioncontrol(view.el, {
-        trigger: self.launchAnimation(view, direction)
-      }).then(function () {
+      return motioncontrol(view.el, options).then(function () {
         if (self.isViewSupportingAnimation) {
           self.triggerMethod('animated:view:' + direction, view);
         }
