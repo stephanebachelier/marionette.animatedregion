@@ -1,6 +1,6 @@
 {
   "name": "marionette.animatedregion",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Animated region for Marionette",
   "main": "dist/marionette.animatedregion.js",
   "author": {
