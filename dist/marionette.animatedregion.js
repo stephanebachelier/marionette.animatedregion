@@ -20,9 +20,9 @@
   }
 }(this, function (Marionette, _, motioncontrol) {
 
-  /*! marionette.animatedregion - v0.2.2
-   *  Release on: 2014-12-30
-   *  Copyright (c) 2014 Stéphane Bachelier
+  /*! marionette.animatedregion - v0.2.3
+   *  Release on: 2015-01-02
+   *  Copyright (c) 2015 Stéphane Bachelier
    *  Licensed MIT */
   'use strict';
 
@@ -88,23 +88,48 @@
 
     // animated view el into visible are
     animateViewIn: function (view) {
-      view.el.classList.add(view.animationClassName);
-      view.el.classList.add(view.animation.in);
+      if (!view.animationClassName.in) {
+        return;
+      }
+      this.updateClassList(view.el, view.animationClassName.in, 'add');
     },
 
     onAnimatedViewIn: function (view) {
-      view.el.classList.remove(view.animationClassName);
-      view.el.classList.remove(view.animation.in);
+      if (!view.animationClassName.out) {
+        return;
+      }
+      this.updateClassList(view.el, view.animationClassName.in, 'remove');
     },
 
     animateViewOut: function (view) {
-      view.el.classList.add(view.animationClassName);
-      view.el.classList.add(view.animation.out);
+      if (!view.animationClassName.in) {
+        return;
+      }
+      this.updateClassList(view.el, view.animationClassName.out, 'add');
     },
 
     onAnimatedViewOut: function (view) {
-      view.el.classList.remove(view.animationClassName);
-      view.el.classList.remove(view.animation.out);
+      if (!view.animationClassName.out) {
+        return;
+      }
+      this.updateClassList(view.el, view.animationClassName.out, 'remove');
+    },
+
+    updateClassList: function (el, className, operation) {
+      if (!el || !className || !operation) {
+        return;
+      }
+
+      var method = el.classList[operation];
+      if (!method) {
+        return false;
+      }
+
+      var classNames = className ? className.split(' ') : [];
+      for (var index = 0, length = classNames.length; index < length; index += 1) {
+        // don't use method variable as it throw Illegal invocation error
+        el.classList[operation](classNames[index]);
+      }
     }
   });
 
