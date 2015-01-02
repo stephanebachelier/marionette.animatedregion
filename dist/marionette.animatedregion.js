@@ -20,7 +20,7 @@
   }
 }(this, function (Marionette, _, motioncontrol) {
 
-  /*! marionette.animatedregion - v0.2.6
+  /*! marionette.animatedregion - v0.3.0
    *  Release on: 2015-01-02
    *  Copyright (c) 2015 Stéphane Bachelier
    *  Licensed MIT */
@@ -51,13 +51,14 @@
       if (!view) { return this; }
 
       var result = this.animateView(view, 'out');
+      var callback = _.partial(this.triggerMethod, 'close');
 
       if (false === result) {
-        this.empty();
+        callback();
         return this;
       }
       else {
-        return result.then(_.bind(this.empty, this));
+        return result.then(_.bind(callback, this));
       }
     },
 
