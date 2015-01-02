@@ -20,7 +20,7 @@
   }
 }(this, function (Marionette, _, motioncontrol) {
 
-  /*! marionette.animatedregion - v0.2.4
+  /*! marionette.animatedregion - v0.2.5
    *  Release on: 2015-01-02
    *  Copyright (c) 2015 Stéphane Bachelier
    *  Licensed MIT */
@@ -64,9 +64,11 @@
     animateView: function (view, direction) {
       direction = direction || 'in';
 
-      var options = {
+      var defaultOptions = {
         trigger: _.bind(_.partial(this.launchAnimation, view, direction), this)
       };
+
+      var options = _.extend(defaultOptions, _.result(this, 'getAnimationOptions'));
 
       var self = this;
       // wait for animation end to remove animation class trigger
@@ -135,6 +137,8 @@
       }
     }
   });
+
+  AnimatedRegion.extend = Marionette.extend;
 
   Marionette.AnimatedRegion = AnimatedRegion;
 
