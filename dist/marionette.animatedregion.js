@@ -20,8 +20,8 @@
   }
 }(this, function (Marionette, _, motioncontrol) {
 
-  /*! marionette.animatedregion - v0.3.0
-   *  Release on: 2015-01-02
+  /*! marionette.animatedregion - v0.3.1
+   *  Release on: 2015-01-09
    *  Copyright (c) 2015 Stéphane Bachelier
    *  Licensed MIT */
   'use strict';
@@ -71,6 +71,8 @@
 
       var options = _.extend(defaultOptions, _.result(this, 'getAnimationOptions'));
 
+      this.triggerMethod('animate:view:' + direction, view);
+
       var self = this;
       // wait for animation end to remove animation class trigger
       // this help replaying the animation on attaching new content
@@ -97,7 +99,10 @@
       if (!view.animationClassName.in) {
         return;
       }
-      this.updateClassList(view.el, view.animationClassName.in, 'add');
+
+      if (this.updateClassList(view.el, view.animationClassName.in, 'add')) {
+        this.triggerMethod('animating:view:in');
+      }
     },
 
     onAnimatedViewIn: function (view) {
@@ -111,7 +116,10 @@
       if (!view.animationClassName.in) {
         return;
       }
-      this.updateClassList(view.el, view.animationClassName.out, 'add');
+
+      if (this.updateClassList(view.el, view.animationClassName.out, 'add')) {
+        this.triggerMethod('animating:view:out');
+      }
     },
 
     onAnimatedViewOut: function (view) {
@@ -136,6 +144,7 @@
         // don't use method variable as it throw Illegal invocation error
         el.classList[operation](classNames[index]);
       }
+      return true;
     }
   });
 
