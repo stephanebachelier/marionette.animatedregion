@@ -20,18 +20,18 @@
   }
 }(this, function (Marionette, _, motioncontrol) {
 
-  /*! marionette.animatedregion - v0.3.1
-   *  Release on: 2015-01-09
+  /*! marionette.animatedregion - v0.3.2
+   *  Release on: 2015-01-31
    *  Copyright (c) 2015 Stéphane Bachelier
    *  Licensed MIT */
   'use strict';
 
   var AnimatedRegion = Marionette.Region.extend({
     attachHtml: function (view) {
-      var observer = new MutationObserver(function () {
+      var observer = new MutationObserver(_.bind(function () {
         observer.disconnect();
         this.animateView(view, 'in');
-      }.bind(this));
+      }, this));
 
       // configuration of the observer:
       var config = {attributes: false, childList: true, characterData: false};
@@ -51,14 +51,15 @@
       if (!view) { return this; }
 
       var result = this.animateView(view, 'out');
-      var callback = _.partial(this.triggerMethod, 'close');
 
       if (false === result) {
-        callback();
+        this.triggerMethod('close');
         return this;
       }
       else {
-        return result.then(_.bind(callback, this));
+        return result.then(_.bind(function () {
+          this.triggerMethod('close');
+        }, this));
       }
     },
 
