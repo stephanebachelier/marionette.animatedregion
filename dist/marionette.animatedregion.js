@@ -20,8 +20,8 @@
   }
 }(this, function (Marionette, _, motioncontrol) {
 
-  /*! marionette.animatedregion - v0.3.2
-   *  Release on: 2015-01-31
+  /*! marionette.animatedregion - v0.3.3
+   *  Release on: 2015-03-03
    *  Copyright (c) 2015 Stéphane Bachelier
    *  Licensed MIT */
   'use strict';
@@ -73,6 +73,7 @@
       var options = _.extend(defaultOptions, _.result(this, 'getAnimationOptions'));
 
       this.triggerMethod('animate:view:' + direction, view);
+      view.triggerMethod('animate:' + direction);
 
       var self = this;
       // wait for animation end to remove animation class trigger
@@ -80,6 +81,7 @@
       return motioncontrol(view.el, options).then(function () {
         if (self.isViewSupportingAnimation) {
           self.triggerMethod('animated:view:' + direction, view);
+          view.triggerMethod('animated:' + direction);
         }
       });
     },
