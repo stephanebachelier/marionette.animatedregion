@@ -1,7 +1,7 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(["marionette",
+    define(["backbone.marionette",
       "underscore",
       "motioncontrol"], function (Marionette, _, motioncontrol) {
       return (root['AnimatedRegion'] = factory(Marionette, _, motioncontrol));
@@ -10,7 +10,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like enviroments that support module.exports,
     // like Node.
-    module.exports = factory(require("marionette"),
+    module.exports = factory(require("backbone.marionette"),
       require("underscore"),
       require("motioncontrol"));
   } else {

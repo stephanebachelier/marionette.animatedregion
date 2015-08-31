@@ -8,8 +8,8 @@ module.exports = {
     returnExportsGlobal: 'AnimatedRegion',
     deps: {
       default: ['Marionette', '_', 'motioncontrol'],
-      amd: ['marionette', 'underscore', 'motioncontrol'],
-      cjs: ['marionette', 'underscore', 'motioncontrol'],
+      amd: ['backbone.marionette', 'underscore', 'motioncontrol'],
+      cjs: ['backbone.marionette', 'underscore', 'motioncontrol'],
       global: ['Marionette', '_', 'motioncontrol']
     }
   }
