@@ -44,7 +44,7 @@
       Marionette.Region.prototype.attachHtml.call(this, view);
     },
 
-    close: function () {
+    empty: function () {
       var view = this.currentView;
 
       // If there is no view in the region just stop which is a noop.
@@ -53,12 +53,12 @@
       var result = this.animateView(view, 'out');
 
       if (false === result) {
-        this.triggerMethod('close');
+        this.triggerMethod('empty');
         return this;
       }
       else {
         return result.then(_.bind(function () {
-          this.triggerMethod('close');
+          this.triggerMethod('empty');
         }, this));
       }
     },
