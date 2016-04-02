@@ -32,5 +32,9 @@
     "jshint-stylish": "^0.2.0",
     "load-grunt-config": "^0.10.0",
     "time-grunt": "^0.3.2"
+  },
+  "dependencies": {
+    "lodash": "^4.7.0",
+    "motioncontrol.js": "^0.1.1"
   }
 }
