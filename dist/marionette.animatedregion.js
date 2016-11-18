@@ -15,10 +15,12 @@
 }(this, function (Marionette, _, motioncontrol) {
 
 /*! marionette.animatedregion - v0.3.4
- *  Release on: 2016-04-03
+ *  Release on: 2016-11-18
  *  Copyright (c) 2016 Stéphane Bachelier
  *  Licensed MIT */
 'use strict';
+
+var raf = require('raf');
 
 var AnimatedRegion = Marionette.Region.extend({
   attachHtml: function (view) {
@@ -137,10 +139,15 @@ var AnimatedRegion = Marionette.Region.extend({
     }
 
     var classNames = className ? className.split(' ') : [];
-    for (var index = 0, length = classNames.length; index < length; index += 1) {
-      // don't use method variable as it throw Illegal invocation error
-      el.classList[operation](classNames[index]);
-    }
+
+    raf(function tick () {
+      for (var index = 0, length = classNames.length; index < length; index += 1) {
+        // don't use method variable as it throw Illegal invocation error
+        el.classList[operation](classNames[index]);
+      }
+      raf(tick)
+    });
+
     return true;
   }
 });

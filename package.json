@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "lodash": "^4.7.0",
-    "motioncontrol.js": "^0.1.1"
+    "motioncontrol.js": "^0.1.1",
+    "raf": "^3.3.0"
   }
 }
