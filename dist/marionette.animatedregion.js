@@ -8,7 +8,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require("backbone.marionette"),require("lodash"),require("motioncontrol.js"));
+    module.exports = factory(require("backbone.marionette"),require("lodash"),require("motioncontrol.js"),require("raf"));
   } else {
     root['AnimatedRegion'] = factory(Marionette,_,motioncontrol);
   }
@@ -145,7 +145,6 @@ var AnimatedRegion = Marionette.Region.extend({
         // don't use method variable as it throw Illegal invocation error
         el.classList[operation](classNames[index]);
       }
-      raf(tick)
     });
 
     return true;
