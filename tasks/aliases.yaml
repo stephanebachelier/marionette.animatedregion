@@ -5,7 +5,6 @@ build:
   - clean
   - jshint:lib
   - jscs:lib
-  - lintspaces:lib
   - concat
   - umd
   - uglify

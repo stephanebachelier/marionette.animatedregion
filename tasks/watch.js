@@ -3,8 +3,7 @@ module.exports = {
     files: '<%= jshint.gruntfile.src %>',
     tasks: [
       'jshint:gruntfile',
-      'jscs:gruntfile',
-      'lintspaces:gruntfile'
+      'jscs:gruntfile'
     ]
   },
   lib: {
@@ -17,8 +16,7 @@ module.exports = {
     files: '<%= jshint.test.src %>',
     tasks: [
       'jshint:test',
-      'jscs:test',
-      'lintspaces:test'
+      'jscs:test'
     ]
   }
 };
