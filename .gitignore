@@ -7,3 +7,5 @@ docs
 npm-debug.log
 coverage
 report
+.idea
+/bower_components/

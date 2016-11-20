@@ -1,6 +1,6 @@
 {
   "name": "marionette.animatedregion",
-  "version": "0.3.3",
+  "version": "0.3.6",
   "description": "Animated region for Marionette",
   "main": "dist/marionette.animatedregion.js",
   "readmeFilename": "README.md",
@@ -32,5 +32,10 @@
     "jshint-stylish": "^0.2.0",
     "load-grunt-config": "^0.10.0",
     "time-grunt": "^0.3.2"
+  },
+  "dependencies": {
+    "lodash": "^4.7.0",
+    "motioncontrol.js": "^0.1.1",
+    "raf": "^3.3.0"
   }
 }
